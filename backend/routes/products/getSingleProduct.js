@@ -1,5 +1,4 @@
 const ProductModel = require("../../models/productModel");
-const ErrorHandler = require("../../utils/errorHandler");
 
 const getSingleProduct = async (req, res, next) => {
   const { id } = req.params;
