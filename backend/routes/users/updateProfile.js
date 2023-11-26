@@ -16,7 +16,6 @@ const updateProfile = async (req, res, next) => {
       userData,
       options
     );
-    console.log(user);
     res.send(user);
   } catch (err) {
     res.status(500).send(err.message);
