@@ -49,9 +49,13 @@ userSchema.pre("save", async function (next) {
 
 //JWT Token
 userSchema.methods.getJWTToken = async function () {
-  const token = await jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRY,
-  });
+  const token = await jwt.sign(
+    { id: this._id },
+    process.env.JWT_SECRET
+    //   , {
+    //   expiresIn: process.env.JWT_EXPIRY,
+    // }
+  );
   return token;
 };
 //compare password with hashing
@@ -74,10 +78,10 @@ userSchema.methods.getResetPasswordToken = function () {
     .update(resetToken)
     .digest("hex");
 
-    //Expire token after 15 minutes
-    this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  //Expire token after 15 minutes
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 
-    return resetToken;
+  return resetToken;
 };
 
 module.exports = mongoose.model("User", userSchema);
