@@ -9,8 +9,10 @@ const resetPassword = require("./resetPassword");
 const getUserProfile = require("./getUserProfile");
 const changePassword = require("./changePassword");
 const updateProfile = require("./updateProfile");
-const getAllUSer = require("./getAllUserForAdmin");
-const getSingleUser = require("./getSingleUserForAdmin");
+const getAllUSer = require("./admin/getAllUser");
+const getSingleUser = require("./admin/getSingleUser");
+const updateUserProfileByAdmin = require("./admin/updateUserProfileByAdmin");
+const deleteUser = require("./admin/deleteUser");
 
 router.post("/api/v1/user", createUser);
 router.post("/api/v1/login", loginUser);
@@ -35,4 +37,16 @@ router.get(
   getSingleUser
 );
 
+router.put(
+  "/api/v1/admin/update/:id",
+  isAuthenticated,
+  authorizedRoles(["admin"]),
+  updateUserProfileByAdmin
+);
+router.delete(
+  "/api/v1/admin/delete/:id",
+  isAuthenticated,
+  authorizedRoles(["admin"]),
+  deleteUser
+);
 module.exports = router;

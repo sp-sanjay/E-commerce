@@ -12,7 +12,6 @@ const deleteProduct = async (req, res, next) => {
       });
     }
     const deletedProduct = await ProductModel.findByIdAndDelete(id);
-    console.log(deletedProduct);
     res.json({
       success: true,
       message: "Product deleted Successfully",
