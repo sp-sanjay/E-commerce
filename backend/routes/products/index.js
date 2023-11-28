@@ -8,6 +8,7 @@ const router = express.Router();
 const {isAuthenticated, authorizedRoles} = require('../../middleware/auth');
 const create_updateProductReview = require("./review/create_updateProductReview");
 const getAllReview = require("./review/getAllReview");
+const deleteReview = require("./review/deleteReview");
 router.get("/api/v1/products", getAllProducts);
 router.post("/api/v1/product",isAuthenticated, authorizedRoles(['admin']), createProduct);
 router.put("/api/v1/product/:id", isAuthenticated, authorizedRoles(['admin']), updateProduct);
@@ -15,5 +16,6 @@ router.delete("/api/v1/product/:id", isAuthenticated, authorizedRoles(['admin'])
 router.get("/api/v1/product/:id", getSingleProduct);
 router.put("/api/v1/review", isAuthenticated, create_updateProductReview);
 router.get("/api/v1/getAllreview", getAllReview);
+router.delete("/api/v1/review", isAuthenticated, deleteReview);
 
 module.exports = router;
