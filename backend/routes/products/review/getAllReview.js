@@ -1,4 +1,4 @@
-const ProductModel = require('../../models/productModel');
+const ProductModel = require('../../../models/productModel');
 const getAllReview = async (req, res) => {
     try {
         const { id } = req.query;
