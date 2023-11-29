@@ -1,4 +1,4 @@
-const OrderModel = require("../../../models/orderModel");
+const OrderModel = require("../../models/orderModel");
 const getOrdersById = async (req, res) => {
   try {
     const order = await OrderModel.findById(req.params.id).populate(
